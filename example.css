@@ -5,8 +5,7 @@
 body {
 	background: #E9EBEE;
 	font-family: "Josefin Sans";
-	  src: url(css/fonts/ »
-	  JosefinSans-Light.ttf) format("truetype");
+	  src: url(JosefinSans-Light.ttf) format("truetype");
 	
 }
 .navbar-header
