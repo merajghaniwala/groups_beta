@@ -13,6 +13,6 @@ versionCode = "10" >
 	<name>Groups Demo</name>
 	<description>Groups Demo</description>
 	<author href="http://webmaxinfotech.com" email="merajgmemon@gmail.com">Meraj Ghaniwala</author>
-		<origin access="*" />
+		<origin access="*" launch-external="true" />
 <icon src="logo.png" />
 </widget>
