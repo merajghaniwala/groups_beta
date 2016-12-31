@@ -1,0 +1,134 @@
+	@font-face
+	{
+	  font-family: "Josefin Sans";
+	  src: url(css/fonts/ »
+	  JosefinSans-Light.ttf) format("truetype");
+	}
+	body
+	{
+		background: #E9EBEE; /* For Safari 5.1 to 6.0 */
+		color:white;
+		font-weight:100 !important;
+		font-family:Josefin Sans;
+	}
+	.navbar
+	{
+		background: white;
+	}
+	.navbar-header
+	{
+		width:100% !important;text-align: center;
+	}
+	.navbar-brand 
+	{	
+		width:100% !important;
+		text-align: center;
+	}
+	.navbar-brand  a:hover
+	{
+		color:#337ab7 !important;
+	}
+	.cat-block
+	{
+		background:white;
+		color:black;
+		text-align:center;
+		box-shadow: 7px 9px 15px -9px rgba(82,71,82,0.84);
+		margin-bottom:30px;
+		border-radius: 0.5px;
+	}
+	.cat-block i
+	{
+		font-size: 50px !important;
+		padding-top: 20px;
+		color:#337ab7 !important;
+	}
+	.cat-block p
+	{
+		text-transform:uppercase;
+	}
+	.top-left
+	{
+		border-right: 1px solid black;
+		border-bottom: 1px solid black;
+	}
+	.top-right
+	{
+		//border-left: 1px solid black;
+		border-bottom: 1px solid black;
+	}
+	.bottom-left
+	{
+		border-top: 1px solid black;
+		border-right: 1px solid black;
+	}
+	.bottom-right
+	{
+		border-left: 1px solid black;
+		border-top: 1px solid black;
+	}
+	
+	
+	.inner_content
+	{
+		background:white;
+		color:black;
+		font-size: 20px;
+		padding:10px;
+		margin-bottom:20px;
+		box-shadow: 0px 5px 10px -3px rgba(82,71,82,0.84);
+		position: relative;
+		//background-image:url('../images/TVLOGO-SM.png');
+		min-height:110px;
+	}
+	.content_list
+	{
+		float: left;
+		display:inline-block;
+		//border:1px solid black;
+		padding:0px !important;
+	}
+	.image
+	{
+		clear:both;
+		margin: 0 auto !important;
+	}
+	.horizon-item>.active
+	{
+		//background:green !important;
+	}
+	.title-overlay
+	{
+		position: absolute;
+		//border-radius: 0px 35px 35px 0px;
+		bottom: 25px;
+		padding: 5px;
+		background-color: black;
+		color:white;
+		opacity: 0.8;
+		width: 90%;
+		margin:0 auto;
+		//right: 0;
+		overflow: hidden;
+		white-space: nowrap;
+		box-shadow: 0px 5px 10px -10px rgba(82,71,82,0.84);
+		left: 2%;
+		right: 2%;
+		
+	}
+	@media only screen and (max-width: 640px)
+	{
+		.head_logo
+		{
+			//content:url("../images/TVLOGO-SM.png");
+			margin:0 auto !important;
+		}
+		.content_list
+		{
+			font-size: 20px;
+			//box-shadow: 0px 4px 6px -3px rgba(82,71,82,0.84);
+			//box-shadow: 2px 5px 10px -3px rgba(82,71,82,0.84);
+			width:100% !important;
+			margin-bottom:10px !important;
+		}
+	}

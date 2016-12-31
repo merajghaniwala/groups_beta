@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="css/example.css">
+		<link rel="stylesheet" href="css/stroll.css">
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+		<!-- Styles specifically for the mobile demo page -->
+		<style>
+			body {
+				overflow: hidden;
+			}
+
+			ul {
+				position: relative;
+				width: 100%;
+			}
+				ul li {
+					padding: 25px 20px;
+
+					-webkit-transform: translate3d( 0, 0, 1px );
+				}
+				ul li.cache {
+					-webkit-transform: rotateY( 1deg );
+				}
+
+			.settings {
+				display: none;
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				z-index: 2;
+
+				background: rgba( 0, 0, 0, 0.85 );
+
+				-webkit-transition: all 0.3s ease;
+				   -moz-transition: all 0.3s ease;
+				    -ms-transition: all 0.3s ease;
+				     -o-transition: all 0.3s ease;
+				        transition: all 0.3s ease;
+			}
+				.opened .settings {
+					display: block;
+				}
+
+				.settings .effects li {
+					color: #fff;
+					background: #000;
+				}
+				.settings .effects li:nth-child(odd) {
+					border-top: 1px solid #333;
+					border-bottom: 1px solid #333;
+				}
+				.settings .effects li.active {
+					color: #70df54;
+				}
+				.settings p {
+					padding: 0px 50px 0px 20px;
+				}
+
+				.android .settings .effects li[data-exclude*="android"] {
+					display: none;
+				}
+				#ul-main
+				{
+					margin-bottom:100px;
+				}
+				#ul-main li
+				{
+					box-shadow: 7px 9px 15px -9px rgba(82,71,82,0.84);
+					margin-bottom: 10px;
+					width: 95%;
+					margin: 15px auto;
+				}
+		</style>
+	</head>
+
+	<body>
+		<header class="navbar navbar-fixed-top" id="" style="background: white;box-shadow: 0px 8px 20px -6px rgba(82,71,82,0.84);">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><a href="#" class="navbar-brand"><i class="fa fa-th"></i></a></div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><a href="#" class="navbar-brand"><i class="fa fa-users"></i></a></div>
+					
+				</div>
+			</div>
+		</header>
+		<br><br><br><br>
+		<div class="settings">
+			
+			<ul  class="effects fly-simplified">
+				<li class="curl">Curl</li>
+				<li class="helix">Helix</li>
+				<li class="flip">Flip</li>
+				<li class="wave">Wave</li>
+				<li class="fly-simplified">Fly</li>
+				<li class="cards">Cards</li>
+				<li class="fan" data-exclude="android">Fan</li>
+				
+				<li class="papercut" data-exclude="android">Papercut</li>
+				<li class="zipper" data-exclude="android">Zipper</li>
+				<li class="twirl">Twirl</li>
+			</ul>
+		</div>
+
+		<ul id="ul-main" class="list-li" >
+			
+		</ul>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="js/stroll.js"></script>
+<script>
+(function()
+{
+var url = "http://webmaxinfotech.com/groups/fetch/";
+	function getUrlParameter(sParam)
+	{
+		var sPageURL = window.location.search.substring(1);
+		var sURLVariables = sPageURL.split('&');
+		for (var i = 0; i < sURLVariables.length; i++) 
+		{
+			var sParameterName = sURLVariables[i].split('=');
+			if (sParameterName[0] == sParam) 
+			{
+				return sParameterName[1];
+			}
+		}
+	}
+	
+	$("body").on("click",".btn-link",function()
+	{
+		alert();
+	});
+	
+	$.get(url+"db.php",
+			{
+				task:"loadgrps",
+				cid:getUrlParameter("cid")
+			},
+			function(data)
+			{
+				var random = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+				var DEFAULT_STYLE = $( "ul li:nth-child("+random+")" ).prop("class");
+				//alert(DEFAULT_STYLE+"\n"+random);
+				var entries = jQuery.parseJSON(data);
+				// Keep the list height in sync with the window height
+				window.addEventListener( 'orientationchange', updateHeight, false );
+				window.addEventListener( 'resize', updateHeight, false );
+
+				var IS_ANDROID = navigator.userAgent.match( /android/gi ),
+					IS_IPHONE = navigator.userAgent.match( /iphone/gi );
+
+				var exampleList = document.querySelector( '#ul-main' ),
+					effectsList = document.querySelector( '.settings .effects' ),
+					settingsToggle = document.querySelector( '.settings-toggle' ),
+					settingsPanel = document.querySelector( '.settings' );
+
+				var html = '';
+
+				// Unfortunately all devices aren't capable of running very long lists
+				// so let's adapt in favor of smooth animations
+				
+				//if( IS_ANDROID ) entries.length = 30;
+				//if( IS_IPHONE ) entries.length = 60;
+				
+				for( var i = 0, len = entries.length; i <= len; i++ )
+				{
+					// The cache class is applied as an attempt to force Android to run
+					// all list items through the GPU at start to avoid lag later
+					var attributes = IS_ANDROID ? 'class="cache"' : '';
+					
+					html += '<li ' + attributes + '>'+ entries[i] +'</li>';
+					
+				}
+				exampleList.innerHTML = html;
+				if( IS_ANDROID )
+				{
+					document.body.classList.add( 'android' );
+					var exampleElements = exampleList.querySelectorAll( 'li' );
+					for( var i = 0, len = exampleElements.length; i < len; i++ )
+					{
+						exampleElements[i].classList.remove( 'cache' );
+					}
+				}
+				
+				/*
+				 * Changes to a new type of effect style, this also updates
+				 * the settings UI to highlight the correct style.
+				 *
+				 * @param {String} type The name of the effect to apply
+				 */
+				function changeEffect( type )
+				{
+					var exampleList = document.querySelector( '.list-li' );
+					var previousSelector = document.querySelector( '.settings .effects .' + exampleList.className ),
+						currentSelector = document.querySelector( '.settings .effects .' + type );
+					exampleList.className = type;
+					if( previousSelector )
+					{
+						previousSelector.classList.remove( 'active' );
+					}
+					if( currentSelector )
+					{
+						currentSelector.classList.add( 'active' );
+					}
+				}
+
+				/*
+				 * Updates the list height to match the window height for
+				 * the demo. Also re-binds the list with stroll.js.
+				 */
+				function updateHeight()
+				{
+					exampleList.style.height = window.innerHeight + 'px';
+					effectsList.style.height = ( window.innerHeight - effectsList.offsetTop ) + 'px';
+					stroll.bind( 'ul' );
+				}
+				
+				// Set the default effect
+				changeEffect( DEFAULT_STYLE );
+
+				// Run an initial height update
+				updateHeight();
+				
+			}
+		);
+})();
+		</script>
+
+	</body>
+</html>
