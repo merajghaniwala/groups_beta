@@ -39,7 +39,8 @@ $(document).ready(function()
 	$("body").on("click",".cat-block",function()
 	{
 		var cid = $(this).prop("id");
-		window.location = 'mobile.html?cid='+cid;
+		//window.location = 'mobile.html?cid='+cid;
+		window.open("'whatsapp://send?text=hello world'", "_system");
 	});
 	
 	$("#mas").click(function()
