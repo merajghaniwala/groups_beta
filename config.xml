@@ -13,7 +13,7 @@ versionCode = "10" >
 	<name>Groups Demo</name>
 	<description>Groups Demo</description>
 	<author href="http://webmaxinfotech.com" email="merajgmemon@gmail.com">Meraj Ghaniwala</author>
-	<gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.16" />
+	
 	<feature name="SocialSharing">
   <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
 </feature>
