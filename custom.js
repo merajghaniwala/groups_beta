@@ -39,8 +39,7 @@ $(document).ready(function()
 	$("body").on("click",".cat-block",function()
 	{
 		var cid = $(this).prop("id");
-		//window.location = 'mobile.html?cid='+cid;
-		window.open("'whatsapp://send?text=hello world'", "_system");
+		window.location = 'https://chat.whatsapp.com/1KiabjcAvSu3TLoSrmYQ0D';
 	});
 	
 	$("#mas").click(function()
