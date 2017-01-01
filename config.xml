@@ -18,6 +18,7 @@ versionCode = "10" >
   <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
 </feature>
 	<access origin="whatsapp:*" launch-external="yes" />
-		<access origin="*" launch-external="true" />
+	<allow-intent href="whatsapp://*" />
+	<access origin="*" launch-external="true" />
 <icon src="logo.png" />
 </widget>
