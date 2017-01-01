@@ -19,6 +19,8 @@ versionCode = "10" >
 </feature>
 	<access origin="whatsapp:*" launch-external="yes" />
 	<allow-intent href="whatsapp://*" />
+	<allow-intent href="https://*/*"/>
+<allow-navigation href="https://*/*"/>
 	<access origin="*" launch-external="true" />
 <icon src="logo.png" />
 </widget>
